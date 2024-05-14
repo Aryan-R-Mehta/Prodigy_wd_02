@@ -21,7 +21,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function startTimer() {
         milliseconds++;
-        // Milliseconds Counter
         if (milliseconds < 10) {
             appendMilliseconds.innerHTML = "0" + milliseconds;
         } else {
