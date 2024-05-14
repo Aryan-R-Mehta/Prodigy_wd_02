@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // Your existing code here
+    
     var milliseconds = 0;
     var seconds = 0;
     var minutes = 0;
@@ -16,10 +16,9 @@ document.addEventListener("DOMContentLoaded", function () {
     var buttonLap = document.getElementById("lap");
 
     var Interval;
-    var lapCounter = 1; // Initialize lap counter
+    var lapCounter = 1;
     var lapTimesContainer = document.getElementById("lapTableBody");
 
-    // Function for starting timer
     function startTimer() {
         milliseconds++;
         // Milliseconds Counter
@@ -34,14 +33,14 @@ document.addEventListener("DOMContentLoaded", function () {
             milliseconds = 0;
             appendMilliseconds.innerHTML = "0" + milliseconds;
         }
-        // Second Counter
+     
         if (seconds > 59) {
             minutes++;
             appendMinutes.innerHTML = minutes < 10 ? "0" + minutes : minutes;
             seconds = 0;
             appendSeconds.innerHTML = "0" + seconds;
         }
-        // Minutes Counter
+       
         if (minutes > 59) {
             hours++;
             appendHours.innerHTML = hours < 10 ? "0" + hours : hours;
@@ -50,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    // Button to start timer
+ 
     buttonStart.onclick = function () {
         clearInterval(Interval);
         Interval = setInterval(startTimer, 10);
@@ -58,22 +57,18 @@ document.addEventListener("DOMContentLoaded", function () {
         $("#animateCircle.addAnimation").css("animation-play-state", "running");
     };
 
-    // Button to stop timer
+
     buttonStop.onclick = function () {
         clearInterval(Interval);
         $("#animateCircle").css("animation-play-state", "paused");
     };
 
-    // Button to reset timer
-    // Button to reset timer
 buttonReset.onclick = function () {
     var hidediv = document.getElementById("tohide");
     hidediv.style.display = "block";
 
-    // Show a confirmation dialog
     var confirmReset = window.confirm("Are you sure you want to restart?");
 
-    // Check the user's response
     if (confirmReset) {
         clearInterval(Interval);
         milliseconds = 0;
@@ -84,16 +79,14 @@ buttonReset.onclick = function () {
         appendSeconds.innerHTML = "00";
         appendMinutes.innerHTML = "00";
         appendHours.innerHTML = "00";
-        lapTimesContainer.innerHTML = ""; // Clear lap times
-        lapCounter = 1; // Reset lap counter
+        lapTimesContainer.innerHTML = ""; 
+        lapCounter = 1; 
     } else {
-        // Hide the "No History" message if the user cancels the reset action
         hidediv.style.display = "none";
     }
 };
 
 
-    // Function to handle lap functionality
     function lapFunc() {
         var hidediv = document.getElementById("tohide");
         hidediv.style.display = "none";
@@ -105,6 +98,5 @@ buttonReset.onclick = function () {
         lapCounter++;
     }
 
-    // Assign lap function to lap button
     buttonLap.onclick = lapFunc;
 });
